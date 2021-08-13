@@ -4,6 +4,10 @@ services:
   app:
     build:
       context: .
+    env_file: .env
+    environment:
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     ports:
       - "8080:8080"
     volumes:
