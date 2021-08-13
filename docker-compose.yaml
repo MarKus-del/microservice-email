@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+    - "./:/workspace/app"
+    depends_on:
+      - db
+  db:
+    image: postgres:11
+    environment:
+      - POSTGRES_DB=ms-email
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+    - "./.docker/postgres/data:/var/log/postgresql/data"
+    ports:
+    - "5432:5432"
